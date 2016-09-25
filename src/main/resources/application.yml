@@ -1,0 +1,25 @@
+server:
+   port: 8080
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://${BASE_SEVER}:5432/${DATA_BASE}
+    username: postgres
+    password: cielo
+    driverClassName: org.postgresql.Driver
+
+hateoas:
+    server: http://localhost:8080
+    loja: /loja
+    campanha: /{id}/campanha
+    admin: /{id}/admin
+    categoria: /{id}/categoria
+    meta: /{id}/meta
+    vedendor: /{id}/vedendor
+    venda: /{id}/venda

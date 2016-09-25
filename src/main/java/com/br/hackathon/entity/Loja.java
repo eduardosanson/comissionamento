@@ -25,7 +25,7 @@ public class Loja {
     @OneToMany(mappedBy = "loja",cascade = CascadeType.ALL)
     private List<Vedendor> vedendores;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Admin admin;
 
     @OneToMany(mappedBy = "loja",cascade = CascadeType.ALL)

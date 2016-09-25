@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -70,7 +71,7 @@ public class LojaController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/{id}/admin/auth")
-    public ResponseEntity cadastrarAdmin(@PathVariable Long id, @RequestParam String senha) throws URISyntaxException {
+    public ResponseEntity cadastrarAdmin(@PathVariable Long id, @RequestBody String senha) throws URISyntaxException {
 
         Loja loja = lojaService.buscarPorId(id);
 
@@ -97,6 +98,7 @@ public class LojaController {
         Loja loja = lojaService.buscarPorId(id);
 
         loja.getCategorias().add(categoria);
+        categoria.setLoja(loja);
 
         lojaService.save(loja);
 
@@ -105,6 +107,8 @@ public class LojaController {
         return ResponseEntity.created(uri).build();
 
     }
+
+
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/categoria")
@@ -121,7 +125,10 @@ public class LojaController {
 
         Loja loja = lojaService.buscarPorId(id);
 
+        campanha.setRegistrado(new Date());
+
         loja.getCampanhas().add(campanha);
+        campanha.setLoja(loja);
 
         lojaService.save(loja);
 
@@ -145,6 +152,7 @@ public class LojaController {
         Loja loja = lojaService.buscarPorId(id);
 
         loja.getVedendores().add(vedendor);
+        vedendor.setLoja(loja);
 
         lojaService.save(loja);
 

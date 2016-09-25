@@ -1,5 +1,7 @@
 package com.br.hackathon.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -23,6 +25,7 @@ public class Campanha {
 
     private Date registrado;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     private Loja loja;
 

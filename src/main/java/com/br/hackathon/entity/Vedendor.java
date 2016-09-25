@@ -1,5 +1,7 @@
 package com.br.hackathon.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,6 +22,10 @@ public class Vedendor {
     @OneToMany
     private List<Meta> metas;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Venda> venda;
+
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     private Loja loja;
 
@@ -61,5 +67,13 @@ public class Vedendor {
 
     public void setMetas(List<Meta> metas) {
         this.metas = metas;
+    }
+
+    public List<Venda> getVenda() {
+        return venda;
+    }
+
+    public void setVenda(List<Venda> venda) {
+        this.venda = venda;
     }
 }

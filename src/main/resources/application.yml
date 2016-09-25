@@ -10,8 +10,8 @@ spring:
   datasource:
     platform: postgres
     url: jdbc:postgresql://${BASE_SEVER}:5432/${DATA_BASE}
-    username: postgres
-    password: cielo
+    username: ${user}
+    password: ${password}
     driverClassName: org.postgresql.Driver
 
 hateoas:
